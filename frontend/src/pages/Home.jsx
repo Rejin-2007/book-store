@@ -9,7 +9,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     setLoading(true);
-    axios.get('http://localhost:6588/books')
+    axios.get(`${apiUrl}/books`)
       .then((res) => {
         console.log('Fetched data:', res.data); // 👈 Add this
         setBooks(res.data.data);

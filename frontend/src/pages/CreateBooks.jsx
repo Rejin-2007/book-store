@@ -4,7 +4,9 @@ import axios from 'axios'
 import Backbutton from '../components/Backbutton'
 import { useNavigate } from 'react-router-dom'
 import { useSnackbar } from 'notistack'
+
 const CreateBooks = () => {
+  const apiUrl = import.meta.env.DEFAULT_API_LINK ;
   const [error,setError]=useState('')
   const [title,setTitle] = useState('')
   const [author,setAuthor] = useState('')
@@ -20,7 +22,7 @@ const CreateBooks = () => {
     }
     setLoading(true)
     try {
-      axios.post('http://localhost:6588/books',data).then(()=>{
+      axios.post(`${apiUrl}/books`,data).then(()=>{
         setLoading(false);
         enqueueSnackbar("Book Deleted Sucessfully",{variant:"success"})
         navigate('/')

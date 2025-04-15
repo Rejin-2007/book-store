@@ -12,7 +12,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     try {
-      axios.get(`http://localhost:6588/books/${id}`).then((res)=>{
+      axios.get(`${apiUrl}/books/${id}`).then((res)=>{
         setBook(res.data);
         setLoading(false);
       })

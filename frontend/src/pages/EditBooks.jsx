@@ -7,6 +7,7 @@ import { useSnackbar } from 'notistack'
 
 
 const EditBook = () => {
+  const apiUrl = import.meta.env.DEFAULT_API_LINK ;
   const {enqueueSnackbar} = useSnackbar()
   const [title,setTitle] = useState('')
   const [author,setAuthor] = useState('')
@@ -18,7 +19,7 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true)
     try {
-      axios.get(`http://localhost:6588/books/${id}`).then((res)=>{
+      axios.get(`${apiUrl}/books/${id}`).then((res)=>{
         setTitle(res.data.title)
         setAuthor(res.data.author)
         setPublishYear(res.data.publishYear)
@@ -40,7 +41,7 @@ const EditBook = () => {
     }
     setLoading(true)
     try {
-      axios.put(`http://localhost:6588/books/${id}`,data).then(()=>{
+      axios.put(`${apiUrl}/books/${id}`,data).then(()=>{
         setLoading(false);
         enqueueSnackbar("Book Edited Sucessfully",{variant:"success"})
         navigate('/')
