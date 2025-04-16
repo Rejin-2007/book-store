@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import Spinner from '../components/Spinner'
-import { Link } from 'react-router-dom'
-import { MdOutlineAddBox } from "react-icons/md";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Spinner from '../components/Spinner';
+import { Link } from 'react-router-dom';
+import { MdOutlineAddBox } from 'react-icons/md';
 import BookCard from '../components/home/BookCard';
+
 const Home = () => {
-  const [books, setBooks] = useState([])
-  const [loading, setLoading] = useState(false)
+  const apiUrl = import.meta.env.VITE_DEFAULT_API_LINK;
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setLoading(true);
-    axios.get(`${apiUrl}/books`)
+    axios
+      .get(`${apiUrl}/books`)
       .then((res) => {
-        console.log('Fetched data:', res.data); // 👈 Add this
+        console.log('Fetched data:', res.data);
         setBooks(res.data.data);
       })
       .catch((error) => {
@@ -29,18 +33,17 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='P-4 items-center'>
-
-      <h1 className='text-3xl text-center text-white '>My Book List</h1>
+    <div className="P-4 items-center">
+      <h1 className="text-3xl text-center text-white">My Book List</h1>
       <Link to={`/books/create`}>
         <div className="flex justify-center space-x-2 mt-4">
-          <MdOutlineAddBox className="text-2xl  text-white" />
-          <span className=" text-white text-base">Add Item</span>
+          <MdOutlineAddBox className="text-2xl text-white" />
+          <span className="text-white text-base">Add Item</span>
         </div>
       </Link>
       {loading ? <Spinner /> : <BookCard books={books} />}
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

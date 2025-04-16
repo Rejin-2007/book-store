@@ -1,9 +1,16 @@
 import express from "express";
 import mongoose from "mongoose";
-import { PORT, mongoDBURL } from "./config.js";
 import bookRouter from "./routes/bookRoute.js";
-import cors from 'cors'
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load environment variables from .env file
+
+const mongoDBURL = process.env.MONGODB_URI;
+const PORT = process.env.PORT || 6588; // Default to 5000 if PORT is not set
+
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -12,11 +19,6 @@ app.get("/", (req, res) => {
 });
 
 app.use('/books', bookRouter);
-
-
-
-
-
 
 mongoose.connect(mongoDBURL)
     .then(() => {
