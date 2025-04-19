@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
 const CreateBooks = () => {
-  const apiUrl = import.meta.env.VITE_BACKEND_URL;
+  const apiUrl = "https://book-store-backend-2ymx.onrender.com"
   const [error, setError] = useState('');
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');

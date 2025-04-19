@@ -6,7 +6,7 @@ import { MdOutlineAddBox } from 'react-icons/md';
 import BookCard from '../components/home/BookCard';
 
 const Home = () => {
-  const apiUrl = import.meta.env.VITE_BACKEND_URL;
+  const apiUrl = "https://book-store-backend-2ymx.onrender.com"
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
 

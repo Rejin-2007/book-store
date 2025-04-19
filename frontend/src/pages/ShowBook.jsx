@@ -5,7 +5,7 @@ import Backbutton from "../components/Backbutton";
 import Spinner from "../components/Spinner";
 
 const ShowBook = () => {
-  const apiUrl = import.meta.env.VITE_BACKEND_URL;
+  const apiUrl = "https://book-store-backend-2ymx.onrender.com"
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
