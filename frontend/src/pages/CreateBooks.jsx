@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
 const CreateBooks = () => {
-  const apiUrl = import.meta.env.VITE_DEFAULT_API_LINK || 'http://localhost:6588';
+  const apiUrl = import.meta.env.BACKEND_URL;
   const [error, setError] = useState('');
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -17,7 +17,7 @@ const CreateBooks = () => {
 
   const handleSaveBook = async () => {
     const data = { title, author, publishYear };
-
+  
     setLoading(true);
     try {
       await axios.post(`${apiUrl}/books`, data);
@@ -31,6 +31,8 @@ const CreateBooks = () => {
       console.error('Error in handleSaveBook:', error);
     }
   };
+  
+  
 
   return (
     <div className="p-4">

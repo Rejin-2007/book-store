@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
 const EditBook = () => {
-  const apiUrl = import.meta.env.VITE_DEFAULT_API_LINK;
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const { enqueueSnackbar } = useSnackbar();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');

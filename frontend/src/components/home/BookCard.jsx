@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { PiBookOpenTextLight } from "react-icons/pi";
 import { BiUserCircle, BiShow } from "react-icons/bi";
 import { GiCalendarHalfYear } from "react-icons/gi";
@@ -6,7 +6,7 @@ import { BsInfoCircle } from "react-icons/bs";
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
-import BookModel from "./BookModel"; // Make sure this path is correct
+import BookModel from "./BookModel"; // Modal component to show details
 
 const BookCard = ({ books }) => {
   const [showModal, setShowModal] = useState(false);
@@ -18,7 +18,10 @@ const BookCard = ({ books }) => {
   return (
     <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
       {books.map((book) => (
-        <div key={book._id} className='border-2 border-red-500 rounded-lg px-4 py-2 m-4 mt-4 relative hover:shadow-xl'>
+        <div
+          key={book._id}
+          className='border-2 border-red-500 rounded-lg px-4 py-2 m-4 mt-4 relative hover:shadow-xl'
+        >
           <div className='flex justify-start items-center gap-x-2'>
             <PiBookOpenTextLight className='text-red-300 text-2xl' />
             <h2 className='my-1 text-white'>{book.title}</h2>

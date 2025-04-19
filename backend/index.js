@@ -4,10 +4,10 @@ import bookRouter from "./routes/bookRoute.js";
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 
 const mongoDBURL = process.env.MONGODB_URI;
-const PORT = process.env.PORT || 6588; // Default to 5000 if PORT is not set
+const PORT = process.env.PORT || 6588; 
 
 const app = express();
 

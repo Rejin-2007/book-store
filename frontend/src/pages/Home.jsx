@@ -6,26 +6,20 @@ import { MdOutlineAddBox } from 'react-icons/md';
 import BookCard from '../components/home/BookCard';
 
 const Home = () => {
-  const apiUrl = import.meta.env.VITE_DEFAULT_API_LINK;
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+
     setLoading(true);
     axios
       .get(`${apiUrl}/books`)
       .then((res) => {
-        console.log('Fetched data:', res.data);
-        setBooks(res.data.data);
+        setBooks(res.data.data); // Access the correct data path
       })
       .catch((error) => {
-        if (error.response) {
-          console.error('Response Error:', error.response.status, error.response.data);
-        } else if (error.request) {
-          console.error('Request Error:', error.request);
-        } else {
-          console.error('Unexpected Error:', error.message);
-        }
+        console.error('Error fetching data:', error);
       })
       .finally(() => {
         setLoading(false);
@@ -33,7 +27,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="P-4 items-center">
+    <div className="p-4 items-center">
       <h1 className="text-3xl text-center text-white">My Book List</h1>
       <Link to={`/books/create`}>
         <div className="flex justify-center space-x-2 mt-4">
